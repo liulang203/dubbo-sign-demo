@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: hello-client
+
+dubbo:
+  consumer:
+    filter: signer
