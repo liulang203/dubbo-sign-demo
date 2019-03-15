@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 /**
  * Created by Vinson.Ding on 2019/2/18.
@@ -21,7 +22,7 @@ public class HelloClientApplication {
 
     @RequestMapping("/")
     public Message mainPage() {
-        Message message = new Message("word","hello", LocalDateTime.now());
+        Message message = new Message("word","hello", LocalDateTime.now(), new Random().nextInt(89283293));
         Message receiveMsg = helloService.sayHello("jason",message);
         return receiveMsg;
     }

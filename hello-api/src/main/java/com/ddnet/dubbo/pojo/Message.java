@@ -17,4 +17,5 @@ public class Message implements Serializable {
     private String to;
     private String message;
     private LocalDateTime sendTime;
+    private  int roundom;
 }

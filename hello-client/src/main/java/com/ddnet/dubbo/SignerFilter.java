@@ -22,7 +22,7 @@ public class SignerFilter implements Filter {
         System.out.println("signer call");
         String content = StringUtils.toArgumentString(invocation.getArguments());
         String sign = sign(content);
-        invocation.getAttachments().put("signContent",sign);
+        RpcContext.getContext().setAttachment("signContent",sign);
         return invoker.invoke(invocation);
     }
 

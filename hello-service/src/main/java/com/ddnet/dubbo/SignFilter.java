@@ -18,7 +18,7 @@ import java.util.Base64;
 public class SignFilter implements Filter {
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-        String receiveSign = invocation.getAttachment("signContent");
+        String receiveSign = RpcContext.getContext().getAttachment("signContent");
         System.out.println(receiveSign);
         String content = StringUtils.toArgumentString(invocation.getArguments());
         String sign = sign(content);
