@@ -15,12 +15,11 @@ import java.time.LocalDateTime;
 public class HelloServiceImpl implements HelloService {
     @Value("${spring.application.name}")
     private String serviceName;
-
     @Override
     public Message sayHello(String from, Message message) {
         log.debug("recieve from [{}] message [{}]", from, message);
         message.setTo(from);
-        message.setMessage("from=" + serviceName + ", messageBody=" + message.getMessage());
+        message.setMessage("from="+serviceName+", messageBody="+message.getMessage());
         message.setSendTime(LocalDateTime.now());
         return message;
     }

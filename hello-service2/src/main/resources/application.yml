@@ -1,18 +1,18 @@
 spring:
   application:
-    name: hello-serice
+    name: hello-serice2
 dubbo:
   provider:
     application: ${spring.application.name}
     filter: sign
     parameters:
       signtoken: ${spring.application.name}-signtoken
-    tag: server1
+    tag: server2
   scan:
     base-packages: com.ddnet.dubbo.service
   protocol:
     name: dubbo
-    port: 12345
+    port: 12346
   registry:
     address: zookeeper://172.16.10.187:2181?backup=172.16.10.188:2181,172.16.10.189:2181
   application:

@@ -10,6 +10,7 @@
         <module>hello-service</module>
         <module>hello-client</module>
         <module>hello-context</module>
+        <module>hello-service2</module>
     </modules>
     <name>dubbo-demo</name>
     <packaging>pom</packaging>
