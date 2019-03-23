@@ -1,0 +1,2 @@
+signer=com.ddnet.dubbo.context.filter.SignerFilter
+sign=com.ddnet.dubbo.context.filter.SignFilter

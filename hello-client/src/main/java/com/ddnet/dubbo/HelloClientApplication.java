@@ -17,13 +17,13 @@ import java.util.Random;
 @SpringBootApplication
 @RestController
 public class HelloClientApplication {
-    @Reference(url = "dubbo://127.0.0.1:12345")
+    @Reference
     private HelloService helloService;
 
     @RequestMapping("/")
     public Message mainPage() {
-        Message message = new Message("word","hello", LocalDateTime.now(), new Random().nextInt(89283293));
-        Message receiveMsg = helloService.sayHello("jason",message);
+        Message message = new Message("word", "hello", LocalDateTime.now(), new Random().nextInt(89283293));
+        Message receiveMsg = helloService.sayHello("jason", message);
         return receiveMsg;
     }
 

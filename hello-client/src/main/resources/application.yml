@@ -5,3 +5,7 @@ spring:
 dubbo:
   consumer:
     filter: signer
+  registry:
+    address: zookeeper://172.16.10.141:2181
+  application:
+    qos-enable: false
