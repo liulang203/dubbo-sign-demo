@@ -28,7 +28,7 @@ public class SignFilter implements Filter {
         }
         RpcContext context = RpcContext.getContext();
         String receiveSign = context.getAttachment("signContent");
-        String token = invoker.getUrl().getParameter("signtoken");
+        String token = context.getUrl().getParameter("signtoken");
         String methodName = invocation.getMethodName();
         String content = StringUtils.toArgumentString(invocation.getArguments());
         String sign = SignUtils.sign(token, content);
@@ -37,11 +37,7 @@ public class SignFilter implements Filter {
                     , receiveSign, token, methodName, StringUtils.toArgumentString(invocation.getArguments()));
             throw new RpcException(SIGN_ERROR_CODE, "sign check error");
         }
-        String infName = invoker.getInterface().getName() + "." + methodName;
-        String remoteHost = context.getRemoteHost();
-        long startTime = System.currentTimeMillis();
         Result result = invoker.invoke(invocation);
-        log.info("process dubbo service,info[serviceName={},clientHost={},time={}]", infName, remoteHost, (System.currentTimeMillis() - startTime));
         return result;
     }
 

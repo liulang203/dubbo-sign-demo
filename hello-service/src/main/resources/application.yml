@@ -14,6 +14,10 @@ dubbo:
     name: dubbo
     port: 12345
   registry:
-    address: zookeeper://172.16.10.187:2181?backup=172.16.10.188:2181,172.16.10.189:2181
+    address: 127.0.0.1:2181
+#    username: zookeeper
+#    password: zookeeper
+#    client: curator
+    protocol: zookeeper
   application:
     qos-enable: false

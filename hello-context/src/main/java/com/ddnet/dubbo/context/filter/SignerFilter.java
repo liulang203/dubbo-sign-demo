@@ -26,19 +26,13 @@ public class SignerFilter implements Filter {
         if (PROTOCOL_INJVM.equals(invoker.getUrl().getProtocol())) {
             return invoker.invoke(invocation);
         }
-        log.debug("call dubbo signer filter");
         RpcContext context = RpcContext.getContext();
-        String methodName = invocation.getMethodName();
-        String infName = invoker.getInterface().getName() + "." + methodName;
-        String token = invoker.getUrl().getParameter("default.signtoken");
+        String token = context.getUrl().getParameter("signtoken");
         String content = StringUtils.toArgumentString(invocation.getArguments());
-        String remoteHost = context.getRemoteHost();
         String signContent = SignUtils.sign(token, content);
 
         context.setAttachment("signContent", signContent);
-        long startTime = System.currentTimeMillis();
         Result result = invoker.invoke(invocation);
-        log.info("call dubbo times,info[serviceName={},serverHost={},time={}]", infName, remoteHost, (System.currentTimeMillis() - startTime));
         return result;
 
     }
